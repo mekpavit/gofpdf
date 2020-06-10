@@ -25,7 +25,11 @@ func (f *Fpdf) SplitText(txt string, w float64) (lines []string) {
 	l := 0
 	for i < nb {
 		c := s[i]
-		l += cw[c]
+		if cw[int(c)] == 0 { //Marker width 0 used for missing symbols
+			l += f.currentFont.Desc.MissingWidth
+		} else if cw[int(c)] != 65535 { //Marker width 65535 used for zero width symbols
+			l += cw[int(c)]
+		}
 		if unicode.IsSpace(c) || isChinese(c) {
 			sep = i
 		}
