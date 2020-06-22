@@ -1,7 +1,7 @@
 package gofpdf_test
 
 import (
-	"github.com/jung-kurt/gofpdf"
+	"github.com/mekpavit/gofpdf"
 	"testing"
 )
 
